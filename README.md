@@ -9,7 +9,7 @@ und ggf.
 
 * Daten Anpassungen ([DCA-Anpassungen](https://docs.contao.org/manual/de/anleitungen/dca/#dca-anpassungen))
 
-falls hierzu im Backend weiterDaten erfasst werden müssen.
+falls hierzu im Backend weitere Daten erfasst werden müssen.
 
 ## Installation
 
