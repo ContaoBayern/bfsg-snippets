@@ -28,12 +28,28 @@ Siehe dazu z.B. auch https://docs.contao.org/manual/de/anleitungen/dca/#dca-anpa
 Siehe https://github.com/ContaoBayern/barrierefreiheit-info/blob/main/link-bfsg.md ("Inhaltselement hyperlink")
 
 * Template
-  * `templates/content_element/hyperlink/add_aria_labeledby_text.html.twig` 
- 
+  * `templates/content_element/hyperlink/add_aria_labeledby_text.html.twig`
+
 * DCA
   * Datenstruktur `contao/dca/tl_content.php`
   * Labels `contao/languages/de/tl_content.php`
- 
+
+* CSS 
+  * Im Template wird für den `aria-labelledby`-`<span>`, die CSS Klasse `visually-hidden` vergeben. Diese ist 
+    entsprechend zu stylen.
+  * Bsp.:
+```css
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}    
+``` 
 
 
 ## Anmerkungen

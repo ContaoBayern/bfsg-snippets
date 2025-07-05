@@ -11,5 +11,5 @@
 
 {% block content %}
   {{ parent() }}
-  <span id="{{ aria_labeledby_id }}">{{ data.aria_labeledby_text }}</span>
+  <span id="{{ aria_labeledby_id }}" class="visually-hidden">{{ data.aria_labeledby_text }}</span>
 {%  endblock %}
