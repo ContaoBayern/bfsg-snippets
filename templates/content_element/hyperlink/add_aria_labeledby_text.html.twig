@@ -2,7 +2,7 @@
 
 {% set aria_labeledby_id -%}
   {%- if element_html_id is empty -%}
-  TODO-generate-ID
+    TODO-generate-ID {#- in "CSS-ID/Klasse" nichts angegeben, der Hyperlink hat also keine ID -#}
   {%- else -%}
     {{ element_html_id ~ '__aria-labeledby' }}
   {%- endif -%}
