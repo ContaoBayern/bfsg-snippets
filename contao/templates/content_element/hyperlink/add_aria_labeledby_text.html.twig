@@ -1,0 +1,15 @@
+{% extends "@Contao/content_element/hyperlink.html.twig" %}
+
+{% set aria_labeledby_id -%}
+  {%- if element_html_id is empty -%}
+  TODO-generate-ID
+  {%- else -%}
+    {{ element_html_id ~ '__aria-labeledby' }}
+  {%- endif -%}
+{%- endset %}
+{% set link_attributes = attrs(link_attributes|default).mergeWith({ 'aria-labeledby': aria_labeledby_id }) %}
+
+{% block content %}
+  {{ parent() }}
+  <span id="{{ aria_labeledby_id }}">{{ data.aria_labeledby_text }}</span>
+{%  endblock %}
