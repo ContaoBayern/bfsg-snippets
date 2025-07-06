@@ -1,15 +1,20 @@
 {% extends "@Contao/content_element/hyperlink.html.twig" %}
 
-{% set aria_labeledby_id -%}
-  {%- if element_html_id is empty -%}
-    TODO-generate-ID {#- in "CSS-ID/Klasse" nichts angegeben, der Hyperlink hat also keine ID -#}
-  {%- else -%}
-    {{ element_html_id ~ '__aria-labeledby' }}
-  {%- endif -%}
-{%- endset %}
-{% set link_attributes = attrs(link_attributes|default).mergeWith({ 'aria-labeledby': aria_labeledby_id }) %}
+{% if data.aria_labeledby_text|default is not empty %}
+  {% set aria_labeledby_id -%}
+    {%- if element_html_id is empty -%}
+      TODO-generate-ID {#- in "CSS-ID/Klasse" nichts angegeben, der Hyperlink hat also keine ID -#}
+    {%- else -%}
+      {{ element_html_id ~ '__aria-labeledby' }}
+    {%- endif -%}
+  {%- endset %}
+
+  {% set link_attributes = attrs(link_attributes|default).mergeWith({ 'aria-labeledby': aria_labeledby_id }) %}
+{%- endif -%}
 
 {% block content %}
   {{ parent() }}
-  <span id="{{ aria_labeledby_id }}" class="visually-hidden">{{ data.aria_labeledby_text }}</span>
+  {% if data.aria_labeledby_text|default is not empty %}
+  <span id="{{ aria_labeledby_id }}" class="visually-hidden">{{ data.aria_labeledby_text|default }}</span>
+  {% endif %}
 {%  endblock %}
