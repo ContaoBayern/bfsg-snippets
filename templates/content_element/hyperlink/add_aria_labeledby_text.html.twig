@@ -1,14 +1,7 @@
 {% extends "@Contao/content_element/hyperlink.html.twig" %}
 
 {% if data.aria_labeledby_text|default is not empty %}
-  {% set aria_labeledby_id -%}
-    {%- if element_html_id is empty -%}
-      TODO-generate-ID {#- in "CSS-ID/Klasse" nichts angegeben, der Hyperlink hat also keine ID -#}
-    {%- else -%}
-      {{ element_html_id ~ '__aria-labeledby' }}
-    {%- endif -%}
-  {%- endset %}
-
+  {% set aria_labeledby_id = 'aria_labeled_by__' ~ data.id %}
   {% set link_attributes = attrs(link_attributes|default).mergeWith({ 'aria-labeledby': aria_labeledby_id }) %}
 {%- endif -%}
 
